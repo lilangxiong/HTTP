@@ -11,19 +11,29 @@
 </div>
 
 - POST：传输实体主体。
-![post](./images/http_post.png)
+<div>
+    <img src="./images/http_post.png">
+</div>
 
 - PUT：传输文件（鉴于 HTTP/1.1 的 PUT 方法自身不带验证机制，任何人都可以上传文件 , 存在安全性问题，因此一般的 Web 网站不使用该方法）。
-![put](./images/http_put.png)
+<div>
+    <img src="./images/http_put.png">
+</div>
 
 - HEAD：获得报文首部（HEAD 方法和 GET 方法一样，只是不返回报文主体部分。用于确认URI 的有效性及资源更新的日期时间等）。
-![head](./images/http_head.png)
+<div>
+    <img src="./images/http_head.png">
+</div>
 
 - DELETE：删除文件（HTTP/1.1 的 DELETE 方法本身和 PUT 方法一样不带验证机制，所以一般的 Web 网站也不使用 DELETE 方法）。
-![delete](./images/http_delete.png)
+<div>
+    <img src="./images/http_delete.png">
+</div>
 
 - OPTIONS：用来查询针对请求 URI 指定的资源支持的方法。
-![options](./images/http_options.png)
+<div>
+    <img src="./images/http_options.png">
+</div>
 
 - TRACE： 是让 Web 服务器端将之前的请求通信环回给客户端的方法。
 - CONNECT 要求在与代理服务器通信时建立隧道，实现用隧道协议进行 TCP 通信（主要使用 SSL（Secure Sockets Layer，安全套接层）和 TLS（Transport Layer Security，传输层安全）协议把通信内容加密后经网络隧道传输）。
@@ -37,9 +47,13 @@
 ```
 ### HTTP报文
 - 请求报文：请求端（客户端）的HTTP 报文。
-![request](./images/http_request.png)
+<div>
+    <img src="./images/http_request.png">
+</div>
 - 响应报文：响应端（服务器端）的HTTP 报文。
-![response](./images/http_response.png)
+<div>
+    <img src="./images/http_response.png">
+</div>
 - 请求报文和响应报文的首部内容由以下数据组成。
 ```
     1、请求行-包含用于请求的方法，请求 URI 和 HTTP 版本。
@@ -49,13 +63,21 @@
 
 ### 四种首部字段类型
 - 通用首部字段：请求报文和响应报文两方都会使用的首部。
-![generalHeader](./images/http_generalHeader.png)
+<div>
+    <img src="./images/http_generalHeader.png">
+</div>
 - 请求首部字段：从客户端向服务器端发送请求报文时使用的首部。
-![requestHeader](./images/http_requestHeader.png)
+<div>
+    <img src="./images/http_requestHeader.png">
+</div>
 - 响应首部字段：从服务器端向客户端返回响应报文时使用的首部。
-![responseHeader](./images/http_responseHeader.png)
+<div>
+    <img src="./images/http_responseHeader.png">
+</div>
 - 实体首部字段：针对请求报文和响应报文的实体部分使用的首部
-![entityHeader](./images/http_entityHeader.png)
+<div>
+    <img src="./images/http_entityHeader.png">
+</div>
 
 
 ### 常用内容编码
@@ -65,7 +87,9 @@
 - identity（不进行编码）
 
 ### HTTP状态码
-![statusCode](./images/http_statusCode.png)
+<div>
+    <img src="./images/http_statusCode.png">
+</div>
 - 2XX
 ```
     1、200 OK    表示从客户端发来的请求在服务器端被正常处理了。
@@ -112,13 +136,17 @@
         1、缓存代理：代理转发响应时，缓存代理（Caching Proxy）会预先将资源的副本（缓存）保存在代理服务器上。
         2、透明代理：转发请求或响应时，不对报文做任何加工的代理类型被称为透明代理
 ```
-![proxy](./images/http_proxy.png)
+<div>
+    <img src="./images/http_proxy.png">
+</div>
 
 - 网关：网关是转发其他服务器通信数据的服务器。
 ```
     网关能使通信线路上的服务器提供非 HTTP 协议服务。
 ```
-![gate](images/http_get.png)
+<div>
+    <img src="./images/http_gate.png">
+</div>
 
 - 隧道：隧道是在相隔甚远的客户端和服务器两者之间进行中转，并保持双方通信连接的应用程序。
 
