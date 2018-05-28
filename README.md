@@ -69,6 +69,56 @@
     <img src="./images/http_generalHeader.png">
 </div>
 
+1.Cabhe-Control: private, max-age=0, no-cache   ，格式如左。
+请求指令：
+<table>
+    <tr>
+        <th>指令</th>
+        <th>参数</th>
+        <th>说明</th>
+    </tr>
+    <tr>
+        <td>no-cache</td>
+        <td>无</td>
+        <td>强制向源服务器再次验证</td>
+    </tr>
+    <tr>
+        <td>no-store</td>
+        <td>无</td>
+        <td>不缓存请求或响应的任何内容</td>
+    </tr>
+    <tr>
+        <td>max-age=[second]</td>
+        <td>必需</td>
+        <td>响应的最大Age值</td>
+    </tr>
+    <tr>
+        <td>max-stale( = [ 秒]) </td>
+        <td>可省略</td>
+        <td>接收已过期的响应</td>
+    </tr>
+    <tr>
+        <td>max-fresh=[second]</td>
+        <td>必需</td>
+        <td>期望在指定时间内的响应仍有效</td>
+    </tr>
+    <tr>
+        <td>no-transform</td>
+        <td>无</td>
+        <td>代理不可更改媒体类型</td>
+    </tr>
+    <tr>
+        <td>only-if-cached</td>
+        <td>无</td>
+        <td>从缓存获取资源</td>
+    </tr>
+    <tr>
+        <td>cache-extension</td>
+        <td>-</td>
+        <td>新指令标记（token）</td>
+    </tr>
+</table>
+
 - 请求首部字段：从客户端向服务器端发送请求报文时使用的首部。
 <div>
     <img src="./images/http_requestHeader.png">
