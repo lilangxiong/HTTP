@@ -40,20 +40,22 @@
 
 ### Cookie
 ```
-    Cookie 的作用是通过在请求、响应报文中写入 Cookie 信息来控制客户端的状态。
-    在服务器端发送响应报文时通过手部字段 Set-Cookie，通知客户端保存Cookie。
-    客户端向服务器端发送请求时会在请求报文中加入Cookie。
-    服务器端收到Cookie时会对比服务器上的记录，最后得到之前的状态信息。
+    * Cookie 的作用是通过在请求、响应报文中写入 Cookie 信息来控制客户端的状态。
+    * 在服务器端发送响应报文时通过手部字段 Set-Cookie，通知客户端保存Cookie。
+    * 客户端向服务器端发送请求时会在请求报文中加入Cookie。
+    * 服务器端收到Cookie时会对比服务器上的记录，最后得到之前的状态信息。
 ```
 ### HTTP报文
 - 请求报文：请求端（客户端）的HTTP 报文。
 <div>
     <img src="./images/http_request.png">
 </div>
+
 - 响应报文：响应端（服务器端）的HTTP 报文。
 <div>
     <img src="./images/http_response.png">
 </div>
+
 - 请求报文和响应报文的首部内容由以下数据组成。
 ```
     1、请求行-包含用于请求的方法，请求 URI 和 HTTP 版本。
@@ -66,14 +68,17 @@
 <div>
     <img src="./images/http_generalHeader.png">
 </div>
+
 - 请求首部字段：从客户端向服务器端发送请求报文时使用的首部。
 <div>
     <img src="./images/http_requestHeader.png">
 </div>
+
 - 响应首部字段：从服务器端向客户端返回响应报文时使用的首部。
 <div>
     <img src="./images/http_responseHeader.png">
 </div>
+
 - 实体首部字段：针对请求报文和响应报文的实体部分使用的首部
 <div>
     <img src="./images/http_entityHeader.png">
@@ -90,6 +95,7 @@
 <div>
     <img src="./images/http_statusCode.png">
 </div>
+
 - 2XX
 ```
     1、200 OK    表示从客户端发来的请求在服务器端被正常处理了。
