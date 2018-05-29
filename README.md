@@ -1,9 +1,8 @@
 ## HTTP：HyperText Transfer Protocol，超文本传输协议 。
+
 ### HTTP 是一种不保存状态，即无状态（stateless）协议。HTTP 协议自身不对请求和响应之间的通信状态进行保存。
-```
-    为了实现期望的保持状态功能，于是引入了Cookie 技术。
-    有了 Cookie 再用 HTTP 协议通信，就可以管理状态了。
-```
+- 为了实现期望的保持状态功能，于是引入了Cookie 技术。
+
 ## HTTP 方法
 - GET ：获取资源。
 <div>
@@ -252,6 +251,62 @@
     <img src="./images/http_entityHeader.png">
 </div>
 
+1、Allow，格式：Allow: GET, HEAD
+- Allow 用于通知客户端能够支持 Request-URI 指定资源的所有 HTTP 方法。
+- 服务器接收到不支持的HTTP方法，会返回405。
+
+2、Content-Encoding，格式：Content-Encoding: gzip
+- 服务器对实体的主体部分选用的内容编码方式。
+- gzip
+- compress
+- deflate
+- identity
+
+3、Content-Length，格式：Content-Length: 15000
+- 表明了实体主体部分的大小（单位是字节）。
+- 对实体主体进行内容编码传输时，不能再使用 Content-Length首部字段。
+
+4、Content-Type，格式：Content-Type: text/html; charset=UTF-8
+- 说明了实体主体内对象的媒体类型。和首部字段 Accept 一样，字段值用 type/subtype 形式赋值。
+
+5、Expires，格式：Expires: Wed, 04 Jul 2012 08:26:05 GMT
+- 将资源失效的日期告知客户端。
+
+6、Last-Modified，格式：Last-Modified: Wed, 23 May 2012 09:59:55 GMT
+- 指明资源最终修改的时间。一般来说，这个值就是 Request-URI 指定资源被修改的时间。
+
+## Cookie
+- Set-Cookie，当服务器准备开始管理客户端的状态时，会事先告知各种信息。
+<table>
+    <tr>
+        <th>属性</th>
+        <th>说明</th>
+    </tr>
+    <tr>
+        <td>NAME=VALUE</td>
+        <td>赋予 Cookie 的名称和其值（必需项）</td>
+    </tr>
+    <tr>
+        <td>expires=DATE </td>
+        <td>Cookie 的有效期（若不明确指定则默认为浏览器关闭前为止）</td>
+    </tr>
+    <tr>
+        <td>path=PATH</td>
+        <td>将服务器上的文件目录作为Cookie的适用对象（若不指定则默认为文档所在的文件目录）</td>
+    </tr>
+    <tr>
+        <td>domain=域名</td>
+        <td>作为 Cookie 适用对象的域名 （若不指定则默认为创建 Cookie的服务器的域名）</td>
+    </tr>
+    <tr>
+        <td>Secure </td>
+        <td>仅在 HTTPS 安全通信时才会发送 Cookie</td>
+    </tr>
+    <tr>
+        <td>HttpOnly </td>
+        <td>加以限制，使 Cookie 不能被 JavaScript 脚本访问</td>
+    </tr>
+</table>
 
 ## 常用内容编码
 - gzip（GNU zip）
