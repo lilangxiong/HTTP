@@ -226,6 +226,27 @@
     <img src="./images/http_responseHeader.png">
 </div>
 
+1、Accept-Ranges，格式：Accept-Ranges: bytes
+- 用来告知客户端服务器是否能处理范围请求，以指定获取服务器端某个部分的资源。
+- 两个字段值：bytes、none。
+
+2、Age，格式：Age: 1234567
+- 字段值的单位为秒。
+- 如果是源服务器创建的响应，Age 值表示源服务器在多久前创建了响应。
+- 如果是缓存服务器创建的响应，Age 值是指缓存后的响应再次发起认证到认证完成的时间值。
+
+3、ETag，格式：ETag: "82e22293907ce725faf67773957acd12"
+- 它是一种可将资源以字符串形式做唯一性标识的方式。
+- 服务器会为每份资源分配对应的 ETag值。
+- 资源更新时，ETag 值也需要更新。
+
+4、Location，格式：Location: http://www.usagidesign.jp/sample.html
+- 基本上，该字段会配合 3xx ：Redirection 的响应，提供重定向的URI。
+
+5、Server，格式：Server: Apache/2.2.17 (Unix)
+- 告知客户端当前服务器上安装的 HTTP 服务器应用程序的信息。
+- 可能包括版本号和安装时启用的可选项。
+
 ### 实体首部字段：针对请求报文和响应报文的实体部分使用的首部
 <div>
     <img src="./images/http_entityHeader.png">
