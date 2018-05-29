@@ -69,7 +69,7 @@
     <img src="./images/http_generalHeader.png">
 </div>
 
-1.Cabhe-Control: private, max-age=0, no-cache   ，格式如左。
+1、Cache-Control: private, max-age=0, no-cache   ，格式如左。
 请求指令：
 <table>
     <tr>
@@ -167,6 +167,17 @@
         <td>公共缓存服务器响应的最大Age值（优先级高于 Expires 、max-age）</td>
     </tr>
 </table>
+
+2、Connect 的作用：
+    * 控制不在转发给代理的手部字段，格式：Connection: 不再转发的首部字段名
+    * 管理持久连接（HTTP 1.1默认是持久连接），格式： Connection: Keep-Alive(或者 close)
+    
+3、Pragma 是 HTTP/1.1 之前版本的历史遗留字段，只用在客户端发送的请求中。客户端会要求所有的中间服务器不返回缓存的资源。一般与Cache-Control同时使用：
+    Cache-Control: no-cache
+    Pragma: no-cache
+
+4、Transfer-Encoding 规定了传输报文主体时采用的编码方式。HTTP/1.1 的传输编码方式仅对分块传输编码有效：Transfer-Encoding: chunked。
+
 
 - 请求首部字段：从客户端向服务器端发送请求报文时使用的首部。
 <div>
