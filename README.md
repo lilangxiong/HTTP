@@ -1,10 +1,10 @@
-### HTTP：HyperText Transfer Protocol，超文本传输协议 。
+## HTTP：HyperText Transfer Protocol，超文本传输协议 。
 ### HTTP 是一种不保存状态，即无状态（stateless）协议。HTTP 协议自身不对请求和响应之间的通信状态进行保存。
 ```
     为了实现期望的保持状态功能，于是引入了Cookie 技术。
     有了 Cookie 再用 HTTP 协议通信，就可以管理状态了。
 ```
-### HTTP 方法
+## HTTP 方法
 - GET ：获取资源。
 <div>
     <img src="./images/http_get.png">
@@ -38,14 +38,14 @@
 - TRACE： 是让 Web 服务器端将之前的请求通信环回给客户端的方法。
 - CONNECT 要求在与代理服务器通信时建立隧道，实现用隧道协议进行 TCP 通信（主要使用 SSL（Secure Sockets Layer，安全套接层）和 TLS（Transport Layer Security，传输层安全）协议把通信内容加密后经网络隧道传输）。
 
-### Cookie
+## Cookie
 ```
     * Cookie 的作用是通过在请求、响应报文中写入 Cookie 信息来控制客户端的状态。
     * 在服务器端发送响应报文时通过手部字段 Set-Cookie，通知客户端保存Cookie。
     * 客户端向服务器端发送请求时会在请求报文中加入Cookie。
     * 服务器端收到Cookie时会对比服务器上的记录，最后得到之前的状态信息。
 ```
-### HTTP报文
+## HTTP报文
 - 请求报文：请求端（客户端）的HTTP 报文。
 <div>
     <img src="./images/http_request.png">
@@ -63,14 +63,14 @@
     3、首部字段-包含表示请求和响应的各种条件和属性的各类首部。
 ```
 
-### 四种首部字段类型
-- 通用首部字段：请求报文和响应报文两方都会使用的首部。
+## 四种首部字段类型
+### 通用首部字段：请求报文和响应报文两方都会使用的首部。
 <div>
     <img src="./images/http_generalHeader.png">
 </div>
 
 1、Cache-Control: private, max-age=0, no-cache   ，格式如左。
-请求指令：
+- 请求指令：
 <table>
     <tr>
         <th>指令</th>
@@ -114,7 +114,7 @@
     </tr>
 </table>
 
-响应指令：
+- 响应指令：
 <table>
     <tr>
         <th>指令</th>
@@ -169,39 +169,76 @@
 </table>
 
 2、Connect 的作用：
-    * 控制不在转发给代理的手部字段，格式：Connection: 不再转发的首部字段名
-    * 管理持久连接（HTTP 1.1默认是持久连接），格式： Connection: Keep-Alive(或者 close)
+- 控制不在转发给代理的手部字段，格式：Connection: 不再转发的首部字段名
+- 管理持久连接（HTTP 1.1默认是持久连接），格式： Connection: Keep-Alive(或者 close)
     
 3、Pragma 是 HTTP/1.1 之前版本的历史遗留字段，只用在客户端发送的请求中。客户端会要求所有的中间服务器不返回缓存的资源。一般与Cache-Control同时使用：
-    Cache-Control: no-cache
-    Pragma: no-cache
+- Cache-Control: no-cache
+- Pragma: no-cache
 
 4、Transfer-Encoding 规定了传输报文主体时采用的编码方式。HTTP/1.1 的传输编码方式仅对分块传输编码有效：Transfer-Encoding: chunked。
 
 
-- 请求首部字段：从客户端向服务器端发送请求报文时使用的首部。
+### 请求首部字段：从客户端向服务器端发送请求报文时使用的首部。
 <div>
     <img src="./images/http_requestHeader.png">
 </div>
 
-- 响应首部字段：从服务器端向客户端返回响应报文时使用的首部。
+1、Accept，格式：Accept: text/html,application/xhtml+xml,application/xml;
+- 文本文件：text/html, text/plain, text/css ... ；application/xhtml+xml, application/xml ...
+- 图片文件：image/jpeg, image/gif, image/png ...
+- 视频文件：video/mpeg, video/quicktime ...
+- 应用程序使用的二进制文件：application/octet-stream, application/zip ...
+
+2、Accept-Charset，格式：Accept-Charset: iso-8859-5, unicode-1-1;q=0.8
+
+3、Accept-Encoding，格式：Accept-Encoding: gzip, deflate
+- gzip       由文件压缩程序 gzip（GNU zip）生成的编码格式
+- compress   由 UNIX 文件压缩程序 compress 生成的编码格式
+- deflate    组合使用 zlib 格式（RFC1950）及由 deflate 压缩算法（RFC1951）生成的编码格式
+- identity   不执行压缩或不会变化的默认编码格式
+- \*          指定任意的编码格式
+
+4、Accept-Language，格式：Accept-Language: zh-cn,zh;q=0.7,en-us,en;q=0.3
+
+5、Authorization，格式：Authorization: Basic dWVub3NlbjpwYXNzd29yZA==
+- 通常，想要通过服务器认证的用户代理会在接收到返回的401 状态码响应后，把首部字段 Authorization 加入请求中。
+
+6、If-Match，格式：If-Match: "123456"
+- 服务器会比对 If-Match 的字段值和资源的实体标记值（ETag），仅当两者一致时，才会执行请求。不然返回412。
+- If-Match: *，这种情况直接忽略ETag的值。
+
+7、If-None-Match
+- 服务器会比对 If-None-Match 的字段值和资源的实体标记值（ETag），仅当两者不一致时，才会执行请求。
+
+8、If-Modified-Since，格式：If-Modified-Since: Thu, 15 Apr 2004 00:00:00 GMT
+- If-Modified-Since 字段值晚于Last-Modified，则希望服务器能处理该请求。
+- If-Modified-Since 字段值早于Last-Modified，则返回304.
+
+9、Referer，格式：Referer: http://www.hackr.jp/index.htm
+- 告知服务器请求的原始资源的 URI。
+
+10、User-Agent，格式：User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gec
+- 会将创建请求的浏览器和用户代理名称等信息传达给服务器。
+
+### 响应首部字段：从服务器端向客户端返回响应报文时使用的首部。
 <div>
     <img src="./images/http_responseHeader.png">
 </div>
 
-- 实体首部字段：针对请求报文和响应报文的实体部分使用的首部
+### 实体首部字段：针对请求报文和响应报文的实体部分使用的首部
 <div>
     <img src="./images/http_entityHeader.png">
 </div>
 
 
-### 常用内容编码
+## 常用内容编码
 - gzip（GNU zip）
 - compress（UNIX 系统的标准压缩）
 - deflate（zlib）
 - identity（不进行编码）
 
-### HTTP状态码
+## HTTP状态码
 <div>
     <img src="./images/http_statusCode.png">
 </div>
@@ -241,7 +278,7 @@
     2、503 Service Unavailable    该状态码表明服务器暂时处于超负载或正在进行停机维护，现在无法处理请求。
 ```
 
-### 通信数据转发程序
+## 通信数据转发程序
 - 代理：代理是一种有转发功能的应用程序。代理服务器的基本行为就是接收客户端发送的请求后转发给其他服务器。代理不改变请求 URI，会直接发送给前方持有资源的目标服务器。
 ```
     代理的的作用：
