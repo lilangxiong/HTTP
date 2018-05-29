@@ -275,6 +275,34 @@
 6、Last-Modified，格式：Last-Modified: Wed, 23 May 2012 09:59:55 GMT
 - 指明资源最终修改的时间。一般来说，这个值就是 Request-URI 指定资源被修改的时间。
 
+## 常见设置HTTP Header方式
+```javascript
+    // XMLHttpRequest原生
+    XMLHttpRequest.setRequestHeader("Cache-Control", "no-store");  
+    // Jquery
+    $.ajax({
+        beforeSend: function(request) {  
+            request.setRequestHeader("Cache-Control", "no-store"); 
+        }   
+    })
+    $.ajax({
+        headers: {
+            "Cache-Control": "no-store"
+        }
+    })
+    // Axios
+     axios({
+        headers: {'X-Requested-With': 'XMLHttpRequest'}
+     })
+   // Fetch
+    fetch(url, {
+       headers:{
+           Accept:"application/json",
+           Authorization:"Bearer dfdfdfdfdfdfdf"
+       }
+    })
+```
+
 ## Cookie
 - Set-Cookie，当服务器准备开始管理客户端的状态时，会事先告知各种信息。
 <table>
