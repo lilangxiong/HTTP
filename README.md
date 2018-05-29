@@ -80,42 +80,91 @@
     <tr>
         <td>no-cache</td>
         <td>无</td>
-        <td>强制向源服务器再次验证</td>
+        <td>表示客户端将不会接收缓存过的响应。于是，“中间”的缓存服务器必须把客户端请求转发给源服务器。</td>
     </tr>
     <tr>
         <td>no-store</td>
         <td>无</td>
-        <td>不缓存请求或响应的任何内容</td>
+        <td>暗示请求（和对应的响应）或响应中包含机密信息，规定缓存不能在本地存储请求或响应的任一部分</td>
     </tr>
     <tr>
         <td>max-age=[second]</td>
         <td>必需</td>
-        <td>响应的最大Age值</td>
+        <td>代表资源保存为缓存的最长有效时间（HTTP 1.1 中优先级高于Expires，HTTP 1.0 中优先级低于Expires）</td>
     </tr>
     <tr>
         <td>max-stale( = [ 秒]) </td>
         <td>可省略</td>
-        <td>接收已过期的响应</td>
+        <td>没有参数值，无论多起多长时间，客户端都会接收响应；有具体参数值，仍在 max-stale指定的时间内，客户端也会接收响应</td>
     </tr>
     <tr>
-        <td>max-fresh=[second]</td>
+        <td>min-fresh=[second]</td>
         <td>必需</td>
-        <td>期望在指定时间内的响应仍有效</td>
+        <td>要求缓存服务器返回至少还未过指定时间的缓存资源</td>
     </tr>
     <tr>
         <td>no-transform</td>
         <td>无</td>
-        <td>代理不可更改媒体类型</td>
+        <td>无论是请求还是响应，缓存都不能改变实体主体的媒体类型</td>
     </tr>
     <tr>
         <td>only-if-cached</td>
         <td>无</td>
-        <td>从缓存获取资源</td>
+        <td>从缓存获取资源，如果缓存服务器的本地缓存无响应，则会返回504</td>
+    </tr>
+</table>
+
+响应指令：
+<table>
+    <tr>
+        <th>指令</th>
+        <th>参数</th>
+        <th>说明</th>
     </tr>
     <tr>
-        <td>cache-extension</td>
-        <td>-</td>
-        <td>新指令标记（token）</td>
+        <td>public</td>
+        <td>无</td>
+        <td>缓存服务器会对任意用户提供资源缓存的服务</td>
+    </tr>
+    <tr>
+        <td>private</td>
+        <td>可省略</td>
+        <td>缓存服务器会对特定用户提供资源缓存的服务</td>
+    </tr>
+    <tr>
+        <td>no-cache</td>
+        <td>可省略</td>
+        <td>存服务器不能对资源进行缓存。源服务器以后也将不再对缓存服务器请求中提出的资源有效性进行确认，且禁止其对响应资源进行缓存操作</td>
+    </tr>
+    <tr>
+        <td>no-store</td>
+        <td>无</td>
+        <td>暗示请求（和对应的响应）或响应中包含机密信息，规定缓存不能在本地存储请求或响应的任一部分</td>
+    </tr>
+    <tr>
+        <td>no-transform</td>
+        <td>无</td>
+        <td>无论是请求还是响应，缓存都不能改变实体主体的媒体类型</td>
+    </tr>
+    <tr>
+        <td>must-revalidate</td>
+        <td>无</td>
+        <td>代理会向源服务器再次验证：即将返回的响应缓存目前是否仍然有效（优先级高于 max-stale）</td>
+    </tr>
+    <tr>
+        <td>proxy-revalidate</td>
+        <td>无</td>
+        <td>所有的缓存服务器在返回响应之前，必须再次验证缓存的有效性</td>
+    </tr>
+    <tr>
+        <td>max-age=[second]</td>
+        <td>必需</td>
+        <td>代表资源保存为缓存的最长有效时间（HTTP 1.1 中优先级高于Expires，HTTP 1.0 中优先级低于Expires）</td>
+    </tr>
+    <tr>
+        <td>s-maxage=[second]</td>
+        <td>必需</td>
+        <td>公共缓存服务器响应的最大Age值（优先级高于 Expires 、max-age）</td>
     </tr>
 </table>
 
